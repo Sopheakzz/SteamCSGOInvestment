@@ -90,6 +90,6 @@ if (curl) {
 	}
 	ss << tmp;
 	ss >> today_price; 
-
+    //Test 
 };
 
