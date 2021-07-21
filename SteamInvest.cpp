@@ -117,7 +117,9 @@ void InvestmentStorage::checkitemstats(string itemname) {
 string Item::return_name (){
 	return name; 	
 }; 
-void Item::get_info (string name){
+void Item::item_info (string name){
 	cout << " Name : " << name <<endl  ; 
-	cout << " "
-}
+	cout << " Bought Price : " << initial_price  << " $ "<< endl ; 
+	cout << " Current Price : " << today_price << " $ " << endl ; 
+	cout << " Profit : " << profit << " % " << endl ; 
+}; 
