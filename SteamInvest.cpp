@@ -108,7 +108,16 @@ void InvestmentStorage::deposititem (Item a){
 }
 void InvestmentStorage::checkitemstats(string itemname) {
     for (int i = 0  ; i < Database.size() ; i++){
-		 if (Database[i].)
+		 if (Database[i].return_name == itemname){
+
+		 }
 	}
 }
 
+string Item::return_name (){
+	return name; 	
+}; 
+void Item::get_info (string name){
+	cout << " Name : " << name <<endl  ; 
+	cout << " "
+}
