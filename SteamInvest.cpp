@@ -24,7 +24,7 @@ public :
     void item_info (string name); 
     void clearstats () ;
 	void todayprice () ; 
-
+    string return_name ();
 	
 private:
     string name ;
@@ -38,7 +38,7 @@ private:
 };
 class InvestmentStorage {
 public :
-	 void deposititem (Item) ; 
+	 void deposititem (Item a) ; 
 	 void checkitemstats (string itemname);
 	 void totalworth ();
 	 void listallitems ();
@@ -90,6 +90,25 @@ if (curl) {
 	}
 	ss << tmp;
 	ss >> today_price; 
-    //Test 
+    
 };
+
+void Item::clearstats(){
+     string name = "";
+	string itemURL = "";
+	double initial_price = 0; 
+	double today_price = 0; 
+	double profit = 0 ;
+	double profitpercentage = 0 ; 
+	int amount = 0 ; 
+	double pricetotal = 0 ; 
+};
+void InvestmentStorage::deposititem (Item a){
+	Database.push_back(a) ; 
+}
+void InvestmentStorage::checkitemstats(string itemname) {
+    for (int i = 0  ; i < Database.size() ; i++){
+		 if (Database[i].)
+	}
+}
 
