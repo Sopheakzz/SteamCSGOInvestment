@@ -107,10 +107,11 @@ void InvestmentStorage::deposititem (Item a){
 	Database.push_back(a) ; 
 }
 void InvestmentStorage::checkitemstats(string itemname) {
-    for (int i = 0  ; i < Database.size() ; i++){
-		 if (Database[i].return_name == itemname){
-
-		 }
+     
+	for (int i = 0  ; i < Database.size() ; i++){
+		 
+		 if ((Database[i].return_name()) == itemname){
+              Database[i].item		 }
 	}
 }
 
