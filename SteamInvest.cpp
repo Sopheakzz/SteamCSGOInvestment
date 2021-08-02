@@ -50,13 +50,74 @@ private:
 };
 
 int main (){
+	InvestmentStorage Database; 
+	Item vartmp; 
+	int iterator2 = 0; 
+	vector <Item> Storage; 
+	stringstream ss; 
+	int tmpiterator = 0;
+	double price{ 0 }; 
+	int quanity{ 0 }; 
+	vector <string> items;
+	ifstream t("Data.txt");
+	string str;
+	string tmpitem;
+	string nums ; 
+	int spaces = 0; 
+	t.seekg(0, std::ios::end);
+	str.reserve(t.tellg());
+	t.seekg(0, std::ios::beg);
+    str.assign((std::istreambuf_iterator<char>(t)),
+    std::istreambuf_iterator<char>());
+	
 
-    return 0 ;
+	for (int i  = 0 ;  i < str.size() ; i++) {
+		if (str[i] == '\n' || i + 1 == str.size()){
+			for (int k = i ; k > tmpiterator ; k --){
+				if (str[k]  == ' '){
+					spaces++ ; 
+			    }
+				if (spaces == 2 ){					for (int l = k + 1 ; l < i ; l++ ){
+					nums.push_back(str[l]);
+					}
+					ss << nums ; 
+				    ss >> price >> quanity ; 
+                    ss.str("");
+					ss.clear() ; 
+					spaces = 0 ; 
+					nums.clear() ;
+					
+					for (int m  = tmpiterator ; m < k ; m++){
+					tmpitem.push_back(str[m]); 
+					}
+					vartmp.get_info(tmpitem , price , quanity) ; 
+			     	tmpiterator = i + 1 ; 
+					price = 0  ; 
+				    quanity = 0 ; 
+			     	tmpitem.clear() ; 
+				    Database.deposititem(vartmp); 
+				    vartmp.clearstats(); 
+				    spaces = 0 ; 
+                }
+				
+				
+				
+				
+			}
+		}
+	}
+	
+int test = 0 ; 
+
+	
+	
+
+	return 0; 
 };
 
 void Item::get_info (string itemname , double initprice , int quanity){
 	name = itemname ; 
-	initprice = initial_price ; 
+	initial_price = initprice; 
 	amount = quanity ;
 	string urltmp ; 
 	string nametmp ; 
@@ -90,6 +151,9 @@ if (curl) {
 	}
 	ss << tmp;
 	ss >> today_price; 
+    profit = ( today_price / 1.15 - 0.01 ) - initprice  ; 
+	profitpercentage = profit * 100 / initprice ; 
+	
     
 };
 
@@ -111,9 +175,11 @@ void InvestmentStorage::checkitemstats(string itemname) {
 	for (int i = 0  ; i < Database.size() ; i++){
 		 
 		 if ((Database[i].return_name()) == itemname){
-              Database[i].item		 }
+              Database[i].item_info(itemname) ; 
+			  break; 
+			  } 
 	}
-}
+};
 
 string Item::return_name (){
 	return name; 	
